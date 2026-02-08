@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day, Ishika 🌹</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --rose-light: #FFE5EC;
+            --rose-medium: #FFC1D0;
+            --rose-deep: #C85A7E;
+            --rose-dark: #8B3A5C;
+            --peach: #FFDAB9;
+            --lavender: #E6D5F5;
+            --cream: #FFF8F0;
+            --shadow: rgba(200, 90, 126, 0.2);
+            --glow: rgba(255, 193, 208, 0.6);
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--rose-light) 50%, var(--lavender) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--rose-dark);
+        }
+
+        /* ===== BACKGROUND TEXTURE ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 193, 208, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(230, 213, 245, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== FLOATING ROSE PETALS ===== */
+        .petal {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--rose-medium);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ===== PAGE SECTIONS ===== */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .page.active {
+            display: block;
+            animation: pageEnter 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: bold;
+            color: var(--rose-deep);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 20px var(--shadow);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: bold;
+            color: var(--rose-deep);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--rose-dark);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            line-height: 1.8;
+            color: var(--rose-dark);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== BEAUTIFUL CSS ROSE ===== */
+        .rose-container {
+            margin: 3rem 0;
+            position: relative;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .css-rose {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Rose center */
+        .rose-center {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+            z-index: 5;
+        }
+
+        /* Rose petals */
+        .rose-petal {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c9184a 100%);
+            border-radius: 50% 0 50% 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 100%;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .rose-petal:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(-30px);
+        }
+        .rose-petal:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(72deg) translateY(-30px);
+        }
+        .rose-petal:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(144deg) translateY(-30px);
+        }
+        .rose-petal:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(216deg) translateY(-30px);
+        }
+        .rose-petal:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(288deg) translateY(-30px);
+        }
+
+        /* Outer petals */
+        .rose-petal-outer {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffb3c6 0%, #ff6b9d 100%);
+            border-radius: 50% 0 50% 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 100%;
+            box-shadow: 0 3px 15px rgba(255, 179, 198, 0.4);
+            opacity: 0.9;
+        }
+
+        .rose-petal-outer:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(36deg) translateY(-45px);
+        }
+        .rose-petal-outer:nth-child(7) {
+            transform: translate(-50%, -50%) rotate(108deg) translateY(-45px);
+        }
+        .rose-petal-outer:nth-child(8) {
+            transform: translate(-50%, -50%) rotate(180deg) translateY(-45px);
+        }
+        .rose-petal-outer:nth-child(9) {
+            transform: translate(-50%, -50%) rotate(252deg) translateY(-45px);
+        }
+        .rose-petal-outer:nth-child(10) {
+            transform: translate(-50%, -50%) rotate(324deg) translateY(-45px);
+        }
+
+        /* Rose stem */
+        .rose-stem {
+            position: absolute;
+            width: 6px;
+            height: 80px;
+            background: linear-gradient(180deg, #4a7c59 0%, #2d5a3d 100%);
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(74, 124, 89, 0.3);
+        }
+
+        /* Rose leaves */
+        .rose-leaf {
+            position: absolute;
+            width: 40px;
+            height: 25px;
+            background: linear-gradient(135deg, #5fa777 0%, #4a7c59 100%);
+            border-radius: 0 50% 50% 0;
+            bottom: -40px;
+        }
+
+        .rose-leaf:nth-child(12) {
+            left: -35px;
+            transform: rotate(-30deg);
+        }
+
+        .rose-leaf:nth-child(13) {
+            right: -35px;
+            transform: rotate(30deg) scaleX(-1);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--rose-medium);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 30%; right: 15%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 20%; left: 25%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: 30%; right: 20%; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            margin: 0.5rem;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, var(--rose-deep) 0%, var(--rose-dark) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--shadow), 0 0 30px var(--glow);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C85A7E 100%);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #FFB4A9 0%, #FF8B94 100%);
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            position: fixed;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== BUTTON CONTAINER ===== */
+        .button-group {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 100px;
+        }
+
+        /* ===== PLAYFUL MESSAGE ===== */
+        .playful-msg {
+            display: none;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--rose-deep);
+            margin-top: 1rem;
+            animation: bounce 0.6s ease-in-out;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow);
+            z-index: 1000;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+        }
+
+        /* ===== EMOTIONAL MESSAGE (TYPING EFFECT) ===== */
+        .emotional-text {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 2.5rem;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px var(--shadow);
+            border: 2px solid rgba(255, 193, 208, 0.3);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emotional-text::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 193, 208, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .typing-text {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            line-height: 1.9;
+            color: var(--rose-dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== FINAL PAGE ROSE ANIMATION ===== */
+        .final-rose-container {
+            perspective: 1000px;
+        }
+
+        .final-rose {
+            position: relative;
+            display: inline-block;
+            animation: bloom 2s ease-in-out forwards;
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1) rotate(10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* ===== HEARTS FLOATING ===== */
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatHeart 4s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== MUSIC TOGGLE ===== */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            border: 2px solid var(--rose-medium);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .emotional-text {
+                padding: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .css-rose {
+                transform: scale(0.8);
+            }
+        }
+
+        /* ===== SPECIAL EFFECTS ===== */
+        .glow-text {
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow);
+            }
+            to {
+                text-shadow: 0 0 20px var(--glow), 0 0 30px var(--glow), 0 0 40px var(--glow);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Toggle -->
+    <div class="music-toggle" id="musicToggle" title="Toggle Music">
+        🎵
+    </div>
+
+    <!-- Floating Rose Petals -->
+    <div id="petalsContainer"></div>
+
+    <!-- Floating Hearts -->
+    <div id="heartsContainer"></div>
+
+    <div class="container">
+        <!-- ===== PAGE 1: WELCOME ===== -->
+        <div class="page active" id="page1">
+            <h1 class="glow-text">Happy Rose Day, Ishika 🌹</h1>
+            <p class="subtitle">Zuu, ek chhoti si journey tumhare liye...</p>
+            
+            <div class="rose-container">
+                <div class="css-rose">
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-center"></div>
+                    <div class="rose-stem"></div>
+                    <div class="rose-leaf"></div>
+                    <div class="rose-leaf"></div>
+                </div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+            </div>
+
+            <button class="btn" onclick="goToPage(2)">Proceed →</button>
+        </div>
+
+        <!-- ===== PAGE 2: INTERACTIVE QUESTION ===== -->
+        <div class="page" id="page2">
+            <h2>Zuu, kya tum mere saath<br>aage chalna chahogi?</h2>
+            
+            <div class="rose-container">
+                <div class="css-rose">
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-petal-outer"></div>
+                    <div class="rose-center"></div>
+                    <div class="rose-stem"></div>
+                    <div class="rose-leaf"></div>
+                    <div class="rose-leaf"></div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-yes" onclick="goToPage(3)">YES 💖</button>
+                <button class="btn btn-no" id="noButton" onclick="handleNoClick()" onmouseover="moveNoButton()">NO 🙈</button>
+            </div>
+
+            <p class="playful-msg" id="playfulMsg"></p>
+        </div>
+
+        <!-- ===== PAGE 3: EMOTIONAL MESSAGE ===== -->
+        <div class="page" id="page3">
+            <h2>For You, Zuu 💖</h2>
+            
+            <div class="emotional-text">
+                <p class="typing-text" id="typingText"></p>
+            </div>
+
+            <button class="btn" onclick="goToPage(4)">Next 🌸</button>
+        </div>
+
+        <!-- ===== PAGE 4: FINAL ROSE DAY ===== -->
+        <div class="page" id="page4">
+            <h2>Zuu, tum meri zindagi ka<br>sabse khoobsurat phool ho</h2>
+            
+            <div class="rose-container final-rose-container">
+                <div class="final-rose">
+                    <div class="css-rose" style="transform: scale(1.5);">
+                        <div class="rose-petal"></div>
+                        <div class="rose-petal"></div>
+                        <div class="rose-petal"></div>
+                        <div class="rose-petal"></div>
+                        <div class="rose-petal"></div>
+                        <div class="rose-petal-outer"></div>
+                        <div class="rose-petal-outer"></div>
+                        <div class="rose-petal-outer"></div>
+                        <div class="rose-petal-outer"></div>
+                        <div class="rose-petal-outer"></div>
+                        <div class="rose-center"></div>
+                        <div class="rose-stem"></div>
+                        <div class="rose-leaf"></div>
+                        <div class="rose-leaf"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="glow-text" style="margin-top: 2rem;">Happy Rose Day, Ishika 💖</h1>
+            
+            <p class="subtitle" style="margin-top: 2rem;">Always blooming in my heart ✨</p>
+        </div>
+    </div>
+
+    <script>
+        // ===== PAGE NAVIGATION =====
+        let currentPage = 1;
+
+        function goToPage(pageNum) {
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            
+            setTimeout(() => {
+                currentPage = pageNum;
+                document.getElementById(`page${currentPage}`).classList.add('active');
+                
+                if (pageNum === 3) {
+                    startTypingEffect();
+                }
+                
+                if (pageNum === 4) {
+                    createHearts();
+                }
+            }, 300);
+        }
+
+        // ===== CUTE MESSAGES AND NO BUTTON =====
+        const cuteMessages = [
+            "zuu aise mat kar 😭",
+            "Babu please ✨",
+            "cutu ni hai tu mera 🥺",
+            "Arre Zuu yaar 💔",
+            "Pleeease baby 🌸"
+        ];
+        let messageIndex = 0;
+
+        function moveNoButton() {
+            const button = document.getElementById('noButton');
+            const newTop = Math.random() * 80 + 10;
+            const newLeft = Math.random() * 80 + 10;
+            button.style.top = newTop + '%';
+            button.style.left = newLeft + '%';
+        }
+
+        function handleNoClick() {
+            moveNoButton();
+            showPlayfulMessage();
+        }
+
+        function showPlayfulMessage() {
+            const msg = document.getElementById('playfulMsg');
+            msg.textContent = cuteMessages[messageIndex];
+            msg.style.display = 'block';
+            
+            messageIndex = (messageIndex + 1) % cuteMessages.length;
+            
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        // ===== TYPING EFFECT FOR EMOTIONAL MESSAGE =====
+        const emotionalMessage = "I want to be with you as you said ki you have not bloomed you are the flower that yet hasn't bloomed but i will care and love you in order to make you feel and give you the safe environment to bloom at your fullest 💖. See zuu its just i love you so much i am sorry for the mistake i always make that make you cry and hurt but please trust me when i say this there is no one in this entire life loves you more than i do";
+
+        function startTypingEffect() {
+            const typingElement = document.getElementById('typingText');
+            typingElement.textContent = '';
+            let i = 0;
+            
+            function type() {
+                if (i < emotionalMessage.length) {
+                    typingElement.textContent += emotionalMessage.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                }
+            }
+            
+            type();
+        }
+
+        // ===== CREATE FLOATING ROSE PETALS =====
+        function createPetals() {
+            const container = document.getElementById('petalsContainer');
+            const petalCount = 15;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                petal.style.opacity = Math.random() * 0.5 + 0.3;
+                container.appendChild(petal);
+            }
+        }
+
+        // ===== CREATE FLOATING HEARTS =====
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '💖';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.bottom = '-50px';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 7000);
+                }, i * 200);
+            }
+        }
+
+        // ===== MUSIC TOGGLE =====
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                musicToggle.textContent = '🎵';
+                isPlaying = false;
+            } else {
+                musicToggle.textContent = '🔊';
+                isPlaying = true;
+            }
+        });
+
+        // ===== INITIALIZE =====
+        window.addEventListener('load', () => {
+            createPetals();
+            
+            // Position NO button initially
+            const noBtn = document.getElementById('noButton');
+            noBtn.style.top = '50%';
+            noBtn.style.left = '50%';
+            noBtn.style.transform = 'translate(-50%, -50%)';
+        });
+    </script>
+</body>
+</html>
